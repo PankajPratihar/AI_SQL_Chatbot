@@ -19,3 +19,9 @@ python -m venv venv
 .\venv\Scripts\Activate.ps1
 pip install -r requirements.txt
 python -m streamlit run app.py
+
+
+
+## Live Demo
+
+https://ai-sql-chatbot-nlz9.onrender.com/
