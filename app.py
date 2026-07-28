@@ -362,7 +362,7 @@ with st.sidebar:
     #     placeholder="gsk_...",
     #     help="Get your free key at https://console.groq.com",
     # )
-    groq_api_key = st.secrets["GROQ_API_KEY"]
+    groq_api_key = os.getenv("GROQ_API_KEY")
     st.markdown('<div class="sidebar-title">Model</div>', unsafe_allow_html=True)
     groq_model = st.selectbox(
         "Groq LLM",
