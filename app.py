@@ -356,13 +356,13 @@ def ensure_sample_db(path: str) -> None:
 with st.sidebar:
     st.markdown("## ⚙️ Configuration")
 
-    groq_api_key = st.text_input(
-        "🔑 Groq API Key",
-        type="password",
-        placeholder="gsk_...",
-        help="Get your free key at https://console.groq.com",
-    )
-
+    # groq_api_key = st.text_input(
+    #     "🔑 Groq API Key",
+    #     type="password",
+    #     placeholder="gsk_...",
+    #     help="Get your free key at https://console.groq.com",
+    # )
+    groq_api_key = st.secrets["GROQ_API_KEY"]
     st.markdown('<div class="sidebar-title">Model</div>', unsafe_allow_html=True)
     groq_model = st.selectbox(
         "Groq LLM",
@@ -417,18 +417,20 @@ with st.sidebar:
 # GUARD: API key required
 # ════════════════════════════════════════════════════════════════════════════
 
+# if not groq_api_key:
+#     st.markdown("""
+#     <div class="card">
+#         <span class="pill pill-amber">⚠️ Setup required</span>
+#         <p style="margin-top:10px; color:#475569;">
+#         Enter your <b>Groq API key</b> in the sidebar to get started. It's free at
+#         <a href="https://console.groq.com" target="_blank">console.groq.com</a>.
+#         </p>
+#     </div>
+#     """, unsafe_allow_html=True)
+#     st.stop()
 if not groq_api_key:
-    st.markdown("""
-    <div class="card">
-        <span class="pill pill-amber">⚠️ Setup required</span>
-        <p style="margin-top:10px; color:#475569;">
-        Enter your <b>Groq API key</b> in the sidebar to get started. It's free at
-        <a href="https://console.groq.com" target="_blank">console.groq.com</a>.
-        </p>
-    </div>
-    """, unsafe_allow_html=True)
+    st.error("Groq API key is not configured.")
     st.stop()
-
 # ── Session state init ───────────────────────────────────────────────────────
 if "store" not in st.session_state:
     st.session_state.store = {}
