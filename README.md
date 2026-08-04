@@ -20,7 +20,9 @@ python -m venv venv
 pip install -r requirements.txt
 python -m streamlit run app.py
 
+sql url
 
+mysql+pymysql://root:9382657610%3F%3F%2B%40p@localhost:3306/customer_behavior
 
 ## Live Demo
 

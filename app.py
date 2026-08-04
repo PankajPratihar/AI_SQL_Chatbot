@@ -363,6 +363,8 @@ with st.sidebar:
     #     help="Get your free key at https://console.groq.com",
     # )
     groq_api_key = os.getenv("GROQ_API_KEY")
+    if not groq_api_key:
+        raise ValueError("GROQ_API_KEY environment variable is missing")
     st.markdown('<div class="sidebar-title">Model</div>', unsafe_allow_html=True)
     groq_model = st.selectbox(
         "Groq LLM",
